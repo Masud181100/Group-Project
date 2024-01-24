@@ -1,2 +1,2 @@
-# Group Project
- Group Project
+# Team Project
+ First team project
