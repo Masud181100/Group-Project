@@ -1,0 +1,144 @@
+//User Class
+//////////////////////////////////////////
+createUser(userName:String, email:String, profileImage:File){
+    createUserObject{
+        userName: userName,
+        accountCreatedDate: timeStamp(),
+        email:email,
+        profileImage:profileImage
+    } 
+    post("APIdatabaseLink" , key=userName, createUserObject)
+}
+deleteUser(userName:String){
+    post("APIdatabaseLink" , key=userName, createUserObject)
+}
+displayUser(userName:String){
+    userIn = get("APIdatabaseLink" , key=userName, )
+    return userIn
+}
+
+changeStatus(newStatus:String, userName:String ){
+        
+    newStatusObject{
+        status: newStatus,
+        timeStamp: timeStamp()
+    }    
+    post("APIdatabaseLink" , key=userName, newStatusObject)
+}
+
+changeUsername(newUsername:String, oldUsername:String ){
+        
+    newUsernameObject{
+        username: oldUsername,
+        timeStamp: timeStamp()
+    }    
+    post("APIdatabaseLink", key=userName, newUsernameObject)
+}
+changeEnterActPoints(newPoint:double, userName:String){
+        
+    changeEnterActPoinsObject{
+        points: newPoint,
+        timeStamp: timeStamp()
+    }    
+    post("APIdatabaseLink", key=userName, changeEnterActPoinsObject)
+}
+changeEnterActRecord(userName:String, newRecord[]){
+        
+    recordChange{
+        newRecord[],
+        timeStamp: timeStamp()
+    }    
+    post("APIdatabaseLink", key=userName, recordChange)
+}
+
+
+//Blog Class
+//////////////////////////////////////////
+editBlog(){
+    editBlogObject{
+        blogImage: newBlogImage,
+        blogDescription: newBlogDescription,
+        timeStamp: timeStamp(),
+        blogId: ID
+    }    
+    post("databaseLink", newBlogObject)
+}
+
+deleteBlog(blogId:String){
+    delete("databaseLink", blogId:String)
+}
+createBlog(newBlogImage:File, newBlogDescription:String){
+    newBlogObject{
+        blogImage: newBlogImage,
+        blogDescription: newBlogDescription,
+        timeStamp: timeStamp(),
+        blogId: ID
+    }    
+    post("databaseLink", blogId:String)
+}
+displayBlog(blogId:String){
+    get("databaseLink", blogId)
+}
+//Quests Class
+//////////////////////////////////////////
+editQuest(reward:double, questType:{}, questID:String, questDescription:String){
+    editQuestObject{
+        questreward: reward,
+        questDescription: newQuestDescription,
+        questType:questType{},
+        timeStamp: timeStamp(),
+        questID: questID
+    }    
+    post("databaseLink", newBlogObject)
+}
+
+deleteQuest(questID:String){
+    delete("databaseLink", questID)
+}
+exitQuest(questID:String){
+
+    quest = get("databaseLink", questID)
+    exitQuest(quest)
+    
+}
+startQuest(questID:String){
+    quest = get("databaseLink", questID)
+    startQuest(quest)
+}
+//ShoppingItem
+//////////////////////////////////////////
+createItem(userName:String, creatorImage:File, itemDeccription:String, price:double, itemPicture:File,){
+    editQuestObject{
+        userName: userName,
+        creatorImage: creatorImage,
+        itemDeccription:itemDeccription,
+        itemPicture:itemPicture,
+        timeStamp: timeStamp(),
+        itemID: ID
+    }    
+    post("databaseLink", newBlogObject)
+}
+edit(userName:String, creatorImage:File, itemDeccription:String, price:double, itemPicture:File, itemID:String){
+    editQuestObject{
+        userName: userName,
+        creatorImage: creatorImage,
+        itemDeccription:itemDeccription,
+        itemPicture:itemPicture,
+        timeStamp: timeStamp(),
+        itemID: itemID
+    }    
+    post("databaseLink", newBlogObject)
+}
+deleteItem(itemID:String){
+    delete("databaseLink", itemID)
+}
+buyItem(itemID:String, userName:String){
+
+    item = get("databaseLink", itemID)
+    buy(item)
+    
+}
+displayItem(itemID:String, userName:String){
+    item = get("databaseLink", itemID)
+    return(quest)
+}
